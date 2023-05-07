@@ -35,7 +35,7 @@ jobs:
       with:
         # For posting a rich message using Block Kit
         payload: |
-            {
+          {
             "blocks": [
               {
                 "type": "header",
@@ -54,7 +54,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "*Email:*\${{ secrets.EMAIL }}"
+                    "text": "*Email:*\n${{ secrets.EMAIL }}"
                   },
                   {
                     "type": "mrkdwn",
@@ -85,7 +85,7 @@ jobs:
                 }
               }
             ]
-            }
+          }
 
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
