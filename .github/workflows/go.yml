@@ -28,7 +28,7 @@ jobs:
     - name: Deploy
       run: |
         npm i -g @railway/cli
-        RAILWAY_TOKEN=f460f5c0-bb58-46bf-84cb-b0069f93f751 railway up
+        RAILWAY_TOKEN=${{ secrets.RAILWAY }} railway up
     - name: Send custom JSON data to Slack workflow
       id: slack
       uses: slackapi/slack-github-action@v1.23.0
@@ -50,19 +50,19 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Name:*\nDeng Xiya"
+                    "text": "*Name:*\n${{ secrets.NAME }}"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "*Email:*\ne1112946@u.nus.edu"
+                    "text": "*Email:*\${{ secrets.EMAIL }}"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "*Matriculation:*\nA0269563N"
+                    "text": "*Matriculation:*\n${{ secrets.MATRICULATION }}"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "*Repository:*\nhttps://github.com/lyfer233/dov-bear"
+                    "text": "*Repository:*\n${{ secrets.REPO }}"
                   }
                 ]
               },
@@ -70,7 +70,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "https://dov-bear-production-29e3.up.railway.app/"
+                  "text": "${{ secrets.URL }}"
                 },
                 "accessory": {
                   "type": "button",
@@ -80,7 +80,7 @@ jobs:
                     "emoji": true
                   },
                   "value": "click_me_123",
-                  "url": "https://dov-bear-production-29e3.up.railway.app/",
+                  "url": "${{ secrets.URL }}",
                   "action_id": "button-action"
                 }
               }
